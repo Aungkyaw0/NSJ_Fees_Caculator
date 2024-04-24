@@ -1,7 +1,7 @@
 public class Athlete{
     private String name;
     private String trainingPlan;
-    private dobule currentWeight;
+    private double currentWeight;
     private int numOfCompetition;
     private int numOfCoachingHour;
     public String getName() {
@@ -20,11 +20,11 @@ public class Athlete{
         this.trainingPlan = trainingPlan;
     }
 
-    public dobule getCurrentWeight() {
+    public double getCurrentWeight() {
         return currentWeight;
     }
 
-    public void setCurrentWeight(dobule currentWeight) {
+    public void setCurrentWeight(double currentWeight) {
         this.currentWeight = currentWeight;
     }
 
