@@ -1,15 +1,23 @@
 public class Athlete{
-    private String name;
+    private String athleteName;
     private String trainingPlan;
     private double currentWeight;
     private int numOfCompetition;
     private int numOfCoachingHour;
-    public String getName() {
-        return name;
+    public String getAthleteName() {
+        return athleteName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    Athlete(){
+        this.athleteName = "";
+        this.trainingPlan = "";
+        this.currentWeight = 0.00;
+        this.numOfCoachingHour = 0;
+        this.numOfCompetition = 0;
+    }
+
+    public void setAthleteName(String athleteName) {
+        this.athleteName = athleteName;
     }
 
     public String getTrainingPlan() {
@@ -44,12 +52,15 @@ public class Athlete{
         this.numOfCoachingHour = numOfCoachingHour;
     }
 
-//    double calculateCoachingFees(){
+//    public double calculateCoachingFees(){
 //
 //    }
 //
-//    String compareWeight(){
+//    public String compareWeight(){
 //
 //    }
+//    public abstract double calculateCompetitionFee(){
+
+
 
 }
