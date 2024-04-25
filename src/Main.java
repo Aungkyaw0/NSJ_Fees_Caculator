@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -35,54 +36,69 @@ public class Main {
 
         //Beginner
         if(trainingPlan.equalsIgnoreCase("Beginner")){
-            BeginnerAthelte bAthlete = new BeginnerAthelte();
+            BeginnerAthlete bAthlete = new BeginnerAthlete();
             bAthlete.setAthleteName(name);
             bAthlete.setTrainingPlan(trainingPlan);
             bAthlete.setCurrentWeight(currentWeight);
             String hasCoachingHour = handler.hasCoachingHour();
             // If user have private coaching hour
             if(hasCoachingHour.equalsIgnoreCase("y") || hasCoachingHour.equalsIgnoreCase("yes")){
-                System.out.println("Enter the number of coaching hour :: ");
-                bAthlete.setNumOfCoachingHour(sc.nextInt());
+                bAthlete.setNumOfCoachingHour(handler.requestCoachingHour());
             }
+            System.out.println(bAthlete.toString());
+            // Calculation
             bAthlete.calculateTotalCosts();
             bAthlete.calculateTrainingFees();
+            bAthlete.calculateTotalCosts();
+            //Output Displaying
+            printResult(bAthlete.getAthleteName(), 0.0, bAthlete.getCoachingCost(), bAthlete.getTrainingCost(), bAthlete.getTotalCost());
         //Intermediate
         }else if(trainingPlan.equalsIgnoreCase("Intermediate")){
             IntermediateAthlete iAthlete = new IntermediateAthlete();
             iAthlete.setAthleteName(name);
             iAthlete.setTrainingPlan(trainingPlan);
             iAthlete.setCurrentWeight(currentWeight);
+
+            //IF Login User, Ask number of competition entered
             if(!isRegister){
-                System.out.println("Enter the number of competition entered :: ");
-                iAthlete.setNumOfCompetition(sc.nextInt());
+                iAthlete.setNumOfCompetition(handler.requestCompetitionEntered());
             }
-            String hasCoachingHour = "";
-            System.out.println("Have you taken private coaching hour? (y/n)");
-            hasCoachingHour = sc.nextLine();
+
+            // Asking user have coaching hour or not
+            String hasCoachingHour = handler.hasCoachingHour();
+            // If user have private coaching hour
             if(hasCoachingHour.equalsIgnoreCase("y") || hasCoachingHour.equalsIgnoreCase("yes")){
-                System.out.println("Enter the number of coaching hour :: ");
-                iAthlete.setNumOfCoachingHour(sc.nextInt());
+                iAthlete.setNumOfCoachingHour(handler.requestCoachingHour());
             }
+            // Intermediate Calculation
             iAthlete.calculateTotalCosts();
             iAthlete.calculateTrainingFees();
+            iAthlete.calculateCompetitionFees();
+            iAthlete.calculateTotalCosts();
+            System.out.println(iAthlete.toString());
+
+
         //Elite
         } else if(trainingPlan.equalsIgnoreCase("Elite")){
             EliteAthlete eAthlete = new EliteAthlete();
             eAthlete.setAthleteName(name);
             eAthlete.setTrainingPlan(trainingPlan);
             eAthlete.setCurrentWeight(currentWeight);
+
+            //IF Login User, Ask number of competition entered
             if(!isRegister){
-                System.out.println("Enter the number of competition entered :: ");
-                eAthlete.setNumOfCompetition(sc.nextInt());
+                eAthlete.setNumOfCompetition(handler.requestCompetitionEntered());
             }
-            String hasCoachingHour = "";
-            System.out.println("Have you taken private coaching hour? (y/n)");
-            hasCoachingHour = sc.nextLine();
+
+            // Asking user have coaching hour or not
+            String hasCoachingHour = handler.hasCoachingHour();
+            // If user have private coaching hour
             if(hasCoachingHour.equalsIgnoreCase("y") || hasCoachingHour.equalsIgnoreCase("yes")){
-                System.out.println("Enter the number of coaching hour :: ");
-                eAthlete.setNumOfCoachingHour(sc.nextInt());
+                eAthlete.setNumOfCoachingHour(handler.requestCoachingHour());
             }
+            System.out.println(eAthlete.toString());
+
+            //Calculate costs
             eAthlete.calculateTotalCosts();
             eAthlete.calculateTrainingFees();
         }
@@ -102,5 +118,19 @@ public class Main {
         System.out.printf("| %-13s | %14s | %17.2f |\n", "Elite", "5 session", 35.00);
         // Print bottom border
         System.out.println("+" + "-".repeat(tableWidth) + "+");
+    }
+//
+
+    static void printResult(String name, double compFee, double coachFee, double trainFee,double totalCosts){
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        System.out.println();
+        System.out.println("-".repeat(39));
+        System.out.printf(" %18s %-2s %-18s \n", "Athlete Name", "-", name);
+        System.out.println("-".repeat(39));
+        System.out.printf("| %-20s |   %-10s |\n", "Training Costs", decimalFormat.format(trainFee));
+        System.out.printf("| %-20s |   %-10s |\n", "Competition Costs", decimalFormat.format(compFee));
+        System.out.printf("| %-20s |   %-10s |\n", "Private Hours Costs", decimalFormat.format(coachFee));
+        System.out.printf("| %-20s |   %-10s |\n", "Total Costs", decimalFormat.format(totalCosts));
+        System.out.println("-".repeat(39));
     }
 }

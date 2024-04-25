@@ -97,7 +97,6 @@ public class InputHandler{
                 }
             }
         }
-
         return numOfCom;
     }
 
@@ -107,7 +106,7 @@ public class InputHandler{
         boolean isValidInput = false;
 
         while (!isValidInput) {
-            System.out.println("Have you taken private coaching hour? (y/n)");
+            System.out.print("Have you taken private coaching hour? (y/n)");
             String input = sc.nextLine().trim();
 
             if (input.isEmpty()) {
@@ -124,8 +123,63 @@ public class InputHandler{
                 }
             }
         }
-
         return ans;
+    }
+
+//    public int requestCoachingHour(){
+//        Scanner sc = new Scanner(System.in);
+//        int cHour = 0;
+//        boolean isValidInput = false;
+//
+//        while (!isValidInput) {
+//            System.out.print("Enter the number of coaching hour :: ");
+//            String input = "";
+//            input = sc.nextLine().trim();
+//            if (input.isEmpty()) {
+//                System.out.println("!!! Empty Input, Try Again !!!");
+//            } else if( (Integer.parseInt(input)) > 20){
+//                System.out.println("!! Invalid Input, Athlete can't take more than 20 private coaching hour !!, Try Again !!!");
+//            } else {
+//                System.out.println("Here We Go :: " + input);
+//                try {
+//                    cHour = Integer.parseInt(input);
+//                    System.out.println(input);
+//                    isValidInput = true;
+//                } catch (Exception e) {
+//                    System.out.println( e.toString() +" : Try Again");
+//                }
+//            }
+//        }
+//
+//        return cHour;
+//    }
+
+    public int requestCoachingHour(){
+        Scanner sc = new Scanner(System.in);
+        int cHour = 0;
+        boolean isValidInput = false;
+
+        while (!isValidInput) {
+            System.out.print("Enter the number of private coaching hour :: ");
+            String input = sc.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("Invalid Input: Try Again");
+            } else {
+                try {
+                    // only accpet if hour is less than or equal to 20
+                    if(Integer.parseInt(input) <= 20){
+                        cHour = Integer.parseInt(input);
+                        isValidInput = true;
+                    }else{
+                        System.out.println("!! Invalid Input, Athlete can't take more than 20 private coaching hour !!, Try Again !!!");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println( e.toString() +" : Try Again");
+                }
+            }
+        }
+        return cHour;
     }
 }
 

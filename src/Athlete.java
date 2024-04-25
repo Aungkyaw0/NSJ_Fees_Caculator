@@ -52,7 +52,18 @@ public class Athlete{
         this.numOfCoachingHour = numOfCoachingHour;
     }
 
-//    public double calculateCoachingFees(){
+    @Override
+    public String toString() {
+        return "Athlete{" +
+                "athleteName='" + athleteName + '\'' +
+                ", trainingPlan='" + trainingPlan + '\'' +
+                ", currentWeight=" + currentWeight +
+                ", numOfCompetition=" + numOfCompetition +
+                ", numOfCoachingHour=" + numOfCoachingHour +
+                '}';
+    }
+
+    //    public double calculateCoachingFees(){
 //
 //    }
 //
