@@ -24,25 +24,38 @@ public class InputHandler{
 
     public int requestOperation(){
         Scanner sc = new Scanner(System.in);
-        while(true){
-            int op;
-            System.out.print("Enter the operation number (1 or 2) :: ");
-            op = sc.nextInt();
-            if( op == 1 || op == 2){
-                if(op == 1){
-                    Main.isRegister = true;
+        int op = 0;
+        boolean isValid =false;
+
+        while(!isValid){
+            System.out.print("Enter the operation number (1 or 2 or 3) :: ");
+            String input = sc.nextLine().trim();
+            if(input.isEmpty()){
+                System.out.println("!!! Input is Empty, Pls Try Again !!!");
+            }else {
+                try{
+                    if(Integer.parseInt(input) == 1 || Integer.parseInt(input) == 2 || Integer.parseInt(input) == 3){
+                       op = Integer.parseInt(input);
+                       if(op == 1){
+                           Main.isRegister = true;
+                       }
+                       isValid = true;
+                    }else {
+                        System.out.println("!!! Invalid input, Pls enter 1 or 2 or 3 only, Try Again !!!");
+                    }
+                }catch (Exception e){
+                    System.out.println( e.toString() +" : Try Again");
                 }
-                return op;
-            }else{
-                System.out.println("!!!Pls enter 1 or 2 only!!!");
             }
+
         }
+        return op;
     }
     public String requestTrainingPlan(){
         Scanner sc = new Scanner(System.in);
         while (true){
             String tp="";
-            System.out.print("Choose the training plan :: ");
+            System.out.print("\nChoose the training plan :: ");
             tp = sc.nextLine();
             if(!(tp.isEmpty()) || !(tp.isBlank()) ){
                 if(tp.equalsIgnoreCase("Beginner") || tp.equalsIgnoreCase("Intermediate") || tp.equalsIgnoreCase("Elite")){
@@ -126,33 +139,6 @@ public class InputHandler{
         return ans;
     }
 
-//    public int requestCoachingHour(){
-//        Scanner sc = new Scanner(System.in);
-//        int cHour = 0;
-//        boolean isValidInput = false;
-//
-//        while (!isValidInput) {
-//            System.out.print("Enter the number of coaching hour :: ");
-//            String input = "";
-//            input = sc.nextLine().trim();
-//            if (input.isEmpty()) {
-//                System.out.println("!!! Empty Input, Try Again !!!");
-//            } else if( (Integer.parseInt(input)) > 20){
-//                System.out.println("!! Invalid Input, Athlete can't take more than 20 private coaching hour !!, Try Again !!!");
-//            } else {
-//                System.out.println("Here We Go :: " + input);
-//                try {
-//                    cHour = Integer.parseInt(input);
-//                    System.out.println(input);
-//                    isValidInput = true;
-//                } catch (Exception e) {
-//                    System.out.println( e.toString() +" : Try Again");
-//                }
-//            }
-//        }
-//
-//        return cHour;
-//    }
 
     public int requestCoachingHour(){
         Scanner sc = new Scanner(System.in);
@@ -180,6 +166,33 @@ public class InputHandler{
             }
         }
         return cHour;
+    }
+
+    public String askRunAgain() {
+        Scanner sc = new Scanner(System.in);
+        String runAgain = "";
+        boolean isValid = false;
+        while (!isValid){
+            System.out.println("Do you want to run again (y/n) :: ");
+            String input = sc.nextLine().trim();
+            if(input.isEmpty()){
+                System.out.println("!!! Empty Input, Pls Enter Again !!!");
+            }else{
+                try {
+                    if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("Yes") ||
+                            input.equalsIgnoreCase("n") || input.equalsIgnoreCase("No")){
+                        runAgain = input;
+                        isValid = true;
+                    }else {
+                        System.out.println("!!! Invalid Input, Pls enter Yes or No only, Try Again !!!");
+                    }
+                } catch (Exception e){
+                    System.out.println(e.toString() + ", Try Again");
+                }
+            }
+
+        }
+        return runAgain;
     }
 }
 
