@@ -1,10 +1,12 @@
 public interface Training {
-    public abstract double calculateTrainingFees();
-    public abstract double calculateCoachingHoursFees();
-    public abstract double calculateTotalCosts();
+    double calculateTrainingFees();
+
+    double calculateCoachingHoursFees();
+
+    double calculateTotalCosts();
 }
 
-class BeginnerAthlete extends Athlete implements Training{
+class BeginnerAthlete extends Athlete implements Training {
     private double trainingCost = 0;
     private double coachingCost = 0;
     private double totalCost = 0;
@@ -41,8 +43,9 @@ class BeginnerAthlete extends Athlete implements Training{
         // 4 week in a month
         return trainingCost;
     }
+
     @Override
-    public double calculateCoachingHoursFees(){
+    public double calculateCoachingHoursFees() {
         // 9.50 fees per hour
         double feePerHour = 9.50;
         // total of coaching hour * fees per hour
@@ -55,18 +58,9 @@ class BeginnerAthlete extends Athlete implements Training{
         totalCost = this.calculateTrainingFees() + this.calculateCoachingHoursFees();
         return totalCost;
     }
-
-    @Override
-    public String toString() {
-        return "BeginnerAthlete{" +
-                "trainingCost=" + trainingCost +
-                ", coachingCost=" + coachingCost +
-                ", totalCost=" + totalCost +
-                '}';
-    }
 }
 
-class IntermediateAthlete extends Athlete implements Training{
+class IntermediateAthlete extends Athlete implements Training {
     private double trainingCost = 0.0;
     private double coachingCost = 0.0;
     private double totalCost = 0.0;
@@ -112,21 +106,24 @@ class IntermediateAthlete extends Athlete implements Training{
         trainingCost = weeklyFee * 4;
         return trainingCost;
     }
+
     @Override
-    public double calculateCoachingHoursFees(){
+    public double calculateCoachingHoursFees() {
         // 9.50 fees per hour
         double feePerHour = 9.50;
         // total of coaching hour * fees per hour
         coachingCost = feePerHour * this.getNumOfCoachingHour();
         return coachingCost;
     }
-    public double calculateCompetitionFees(){
+
+    public double calculateCompetitionFees() {
         // entry fees per competition is 22.00
         double entryFeePerCompetition = 22.00;
         // entry fees per competition * total num of competition
         competitionCost = entryFeePerCompetition * this.getNumOfCompetition();
         return competitionCost;
     }
+
     @Override
     public double calculateTotalCosts() {
         // total fees calculation
@@ -134,18 +131,10 @@ class IntermediateAthlete extends Athlete implements Training{
         return totalCost;
     }
 
-    @Override
-    public String toString() {
-        return "IntermediateAthlete{" +
-                "trainingCost=" + trainingCost +
-                ", coachingCost=" + coachingCost +
-                ", totalCost=" + totalCost +
-                ", competitionCost=" + competitionCost +
-                '}';
-    }
+
 }
 
-class EliteAthlete extends Athlete implements Training{
+class EliteAthlete extends Athlete implements Training {
 
     private double trainingCost = 0.0;
     private double coachingCost = 0.0;
@@ -183,6 +172,7 @@ class EliteAthlete extends Athlete implements Training{
     public void setCompetitionCost(double competitionCost) {
         this.competitionCost = competitionCost;
     }
+
     @Override
     public double calculateTrainingFees() {
         // 5 seesion per week cost 35.00
@@ -191,22 +181,25 @@ class EliteAthlete extends Athlete implements Training{
         trainingCost = weeklyFee * 4;
         return trainingCost;
     }
+
     @Override
-    public double calculateCoachingHoursFees(){
+    public double calculateCoachingHoursFees() {
         // 9.50 fees per hour
         double feePerHour = 9.50;
 
         // total of coaching hour * fees per hour
         coachingCost = feePerHour * this.getNumOfCoachingHour();
-        return  coachingCost;
+        return coachingCost;
     }
-    public double calculateCompetitionFees(){
+
+    public double calculateCompetitionFees() {
         // entry fees per competition is 22.00
         double entryFeePerCompetition = 22.00;
         // entry fees per competition * total num of competition
         competitionCost = entryFeePerCompetition * this.getNumOfCompetition();
         return competitionCost;
     }
+
     @Override
     public double calculateTotalCosts() {
         // total fees calculation
