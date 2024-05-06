@@ -22,32 +22,30 @@ import java.util.Scanner;
         }
         return name;
     }
-
-    public int requestOperation() {
-        Scanner sc = new Scanner(System.in);
-        int op = 0;
-        boolean isValid = false;
-        while (!isValid) {
-            System.out.print("Enter the operation number (1 or 2 or 3) :: ");
-            String input = sc.nextLine().trim();
-            if (input.isEmpty()) {
-                System.out.println("!!! Input is Empty, Pls Try Again !!!");
-            } else {
-                try {
-                    if (Integer.parseInt(input) == 1 || Integer.parseInt(input) == 2 || Integer.parseInt(input) == 3) {
+        public int requestOperation() {
+            Scanner sc = new Scanner(System.in);
+            int op = 0;
+            boolean isValid = false;
+            while (!isValid) {
+                System.out.print("Enter the operation number (1 or 2 or 3) :: ");
+                String input = sc.nextLine().trim();
+                if (input.isEmpty()) {
+                    System.out.println("!!! Input is Empty, Pls Try Again !!!");
+                } else {
+                    try {
                         op = Integer.parseInt(input);
-                        isValid = true;
-                    } else {
-                        System.out.println("!!! Invalid input, Pls enter 1 or 2 or 3 only, Try Again !!!");
+                        if (op >= 1 && op <= 3) {
+                            isValid = true;
+                        } else {
+                            System.out.println("!!! Invalid input, Pls enter 1 or 2 or 3 only, Try Again !!!");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input, Pls enter 1 or 2 or 3 only, Try Again !!!");
                     }
-                } catch (Exception e) {
-                    System.out.println("!!! Invalid input for operation number: " + e.getMessage() + "!!!");
-                    System.out.println("--- Please enter a valid number for operation. ---");
                 }
             }
+            return op;
         }
-        return op;
-    }
 
     public String requestTrainingPlan() {
         Scanner sc = new Scanner(System.in);
