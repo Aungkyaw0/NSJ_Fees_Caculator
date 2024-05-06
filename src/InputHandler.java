@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class InputHandler {
+    public class InputHandler {
     public String requestAthleteName() { /* Validation for Athlete Name*/
         Scanner sc = new Scanner(System.in);
         String name = "";
@@ -26,7 +26,6 @@ public class InputHandler {
         Scanner sc = new Scanner(System.in);
         int op = 0;
         boolean isValid = false;
-
         while (!isValid) {
             System.out.print("Enter the operation number (1 or 2 or 3) :: ");
             String input = sc.nextLine().trim();
@@ -47,7 +46,6 @@ public class InputHandler {
                     System.out.println(e + " : Try Again");
                 }
             }
-
         }
         return op;
     }
@@ -63,7 +61,7 @@ public class InputHandler {
                     return tp;
                 }
                 System.out.println("!!! \"" + tp + "\" is not a valid string - Pleas enter (Beginner, Intermediate, Elite) only!!!");
-            }else {
+            } else {
                 System.out.println("!!! Empty String, Pls try again");
             }
         }
@@ -73,11 +71,9 @@ public class InputHandler {
         Scanner sc = new Scanner(System.in);
         double weight = 0.0;
         boolean isValidInput = false;
-
         while (!isValidInput) {
             System.out.print("Enter your current weight :: ");
             String input = sc.nextLine().trim();
-
             if (input.isEmpty()) {
                 System.out.println("Invalid Input: Try Again");
             } else {
@@ -89,7 +85,6 @@ public class InputHandler {
                 }
             }
         }
-
         return weight;
     }
 
@@ -120,11 +115,9 @@ public class InputHandler {
         Scanner sc = new Scanner(System.in);
         String ans = "";
         boolean isValidInput = false;
-
         while (!isValidInput) {
             System.out.print("Have you taken private coaching hour? (y/n)");
             String input = sc.nextLine().trim();
-
             if (input.isEmpty()) {
                 System.out.println("Invalid Input, Pls enter (y,n) only, Try Again");
             } else if (!(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes") ||
@@ -142,16 +135,13 @@ public class InputHandler {
         return ans;
     }
 
-
     public int requestCoachingHour() {
         Scanner sc = new Scanner(System.in);
         int cHour = 0;
         boolean isValidInput = false;
-
         while (!isValidInput) {
             System.out.print("Enter the number of private coaching hour :: ");
             String input = sc.nextLine().trim();
-
             if (input.isEmpty()) {
                 System.out.println("Invalid Input: Try Again");
             } else {
@@ -193,7 +183,6 @@ public class InputHandler {
                     System.out.println(e + ", Try Again");
                 }
             }
-
         }
         return runAgain;
     }

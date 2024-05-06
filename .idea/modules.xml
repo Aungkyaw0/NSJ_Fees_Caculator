@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NSJ_Fees_Caculator.iml" filepath="$PROJECT_DIR$/NSJ_Fees_Caculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NSJ_Fees_Calculator.iml" filepath="$PROJECT_DIR$/NSJ_Fees_Calculator.iml" />
     </modules>
   </component>
 </project>

@@ -1,8 +1,6 @@
 public interface Training {
     double calculateTrainingFees();
-
     double calculateCoachingHoursFees();
-
     double calculateTotalCosts();
 }
 
@@ -37,7 +35,7 @@ class BeginnerAthlete extends Athlete implements Training {
 
     @Override
     public double calculateTrainingFees() {
-        // 2 seesion per week cost 25.00
+        // 2 session per week cost 25.00
         double weeklyFee = 25.00;
         trainingCost = weeklyFee * 4;
         // 4 week in a month
@@ -123,7 +121,6 @@ class IntermediateAthlete extends Athlete implements Training {
         competitionCost = entryFeePerCompetition * this.getNumOfCompetition();
         return competitionCost;
     }
-
     @Override
     public double calculateTotalCosts() {
         // total fees calculation
@@ -131,11 +128,9 @@ class IntermediateAthlete extends Athlete implements Training {
         return totalCost;
     }
 
-
 }
 
 class EliteAthlete extends Athlete implements Training {
-
     private double trainingCost = 0.0;
     private double coachingCost = 0.0;
     private double totalCost = 0.0;
@@ -175,7 +170,7 @@ class EliteAthlete extends Athlete implements Training {
 
     @Override
     public double calculateTrainingFees() {
-        // 5 seesion per week cost 35.00
+        // 5 session per week cost 35.00
         double weeklyFee = 35.00;
         // 4 week in a month
         trainingCost = weeklyFee * 4;
@@ -186,12 +181,10 @@ class EliteAthlete extends Athlete implements Training {
     public double calculateCoachingHoursFees() {
         // 9.50 fees per hour
         double feePerHour = 9.50;
-
         // total of coaching hour * fees per hour
         coachingCost = feePerHour * this.getNumOfCoachingHour();
         return coachingCost;
     }
-
     public double calculateCompetitionFees() {
         // entry fees per competition is 22.00
         double entryFeePerCompetition = 22.00;
@@ -199,7 +192,6 @@ class EliteAthlete extends Athlete implements Training {
         competitionCost = entryFeePerCompetition * this.getNumOfCompetition();
         return competitionCost;
     }
-
     @Override
     public double calculateTotalCosts() {
         // total fees calculation
