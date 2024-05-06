@@ -15,7 +15,8 @@ import java.util.Scanner;
                     name = inp;
                     isValid = true;
                 } catch (Exception e) {
-                    System.out.println("!!! Invalid Input, Pls Enter Again !!!");
+                    System.out.println("!!! Invalid input for athlete name: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid string for name. ---");
                 }
             }
         }
@@ -35,15 +36,13 @@ import java.util.Scanner;
                 try {
                     if (Integer.parseInt(input) == 1 || Integer.parseInt(input) == 2 || Integer.parseInt(input) == 3) {
                         op = Integer.parseInt(input);
-                        if (op == 1) {
-                            Main.isRegister = true;
-                        }
                         isValid = true;
                     } else {
                         System.out.println("!!! Invalid input, Pls enter 1 or 2 or 3 only, Try Again !!!");
                     }
                 } catch (Exception e) {
-                    System.out.println(e + " : Try Again");
+                    System.out.println("!!! Invalid input for operation number: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid number for operation. ---");
                 }
             }
         }
@@ -56,13 +55,18 @@ import java.util.Scanner;
             String tp = "";
             System.out.print("\nChoose the training plan :: ");
             tp = sc.nextLine();
-            if (!(tp.isEmpty()) || !(tp.isBlank())) {
-                if (tp.equalsIgnoreCase("Beginner") || tp.equalsIgnoreCase("Intermediate") || tp.equalsIgnoreCase("Elite")) {
-                    return tp;
+            try{
+                if (!(tp.isEmpty()) || !(tp.isBlank())) {
+                    if (tp.equalsIgnoreCase("Beginner") || tp.equalsIgnoreCase("Intermediate") || tp.equalsIgnoreCase("Elite")) {
+                        return tp;
+                    }
+                    System.out.println("!!! \"" + tp + "\" is not a valid string - Pleas enter (Beginner, Intermediate, Elite) only!!!");
+                } else {
+                    System.out.println("!!! Empty String, Pls try again");
                 }
-                System.out.println("!!! \"" + tp + "\" is not a valid string - Pleas enter (Beginner, Intermediate, Elite) only!!!");
-            } else {
-                System.out.println("!!! Empty String, Pls try again");
+            }catch (Exception e){
+                System.out.println("!!! Invalid input for Training Plan : " + e.getMessage() + "!!!");
+                System.out.println("--- Please enter a valid Training Plan ---");
             }
         }
     }
@@ -81,7 +85,8 @@ import java.util.Scanner;
                     weight = Double.parseDouble(input);
                     isValidInput = true;
                 } catch (NumberFormatException e) {
-                    System.out.println(e + " : Try Again");
+                    System.out.println("!!! Invalid input for weight: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid number for weight ---");
                 }
             }
         }
@@ -104,8 +109,8 @@ import java.util.Scanner;
                     numOfCom = Integer.parseInt(input);
                     isValidInput = true;
                 } catch (NumberFormatException e) {
-                    System.out.println(e + " : Try Again");
-                }
+                    System.out.println("!!! Invalid input for competition entered number: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid number for competition entered ---");                }
             }
         }
         return numOfCom;
@@ -128,7 +133,8 @@ import java.util.Scanner;
                     ans = input;
                     isValidInput = true;
                 } catch (Exception e) {
-                    System.out.println(e.toString() + " : Try Again");
+                    System.out.println("!!! Invalid input for has coaching hour or not: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid value for has coaching hour ---");
                 }
             }
         }
@@ -154,7 +160,8 @@ import java.util.Scanner;
                         System.out.println("!! Invalid Input, Athlete can't take more than 20 private coaching hour !!, Try Again !!!");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println(e + " : Try Again");
+                    System.out.println("!!! Invalid input for coaching hour: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid number for coaching hour ---");
                 }
             }
         }
@@ -180,7 +187,8 @@ import java.util.Scanner;
                         System.out.println("!!! Invalid Input, Pls enter Yes or No only, Try Again !!!");
                     }
                 } catch (Exception e) {
-                    System.out.println(e + ", Try Again");
+                    System.out.println("!!! Invalid input for run again: " + e.getMessage() + "!!!");
+                    System.out.println("--- Please enter a valid value for run again ---");
                 }
             }
         }

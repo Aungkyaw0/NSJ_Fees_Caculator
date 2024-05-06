@@ -4,7 +4,7 @@
 
     public class Main {
         static List<String> users = new ArrayList<>(); // To Store Username
-        static boolean isRegister = false; // To check whether register user or login user
+
         public static void main(String[] args) {
             int op;
             //Existing users in Jud
@@ -14,7 +14,7 @@
             users.add("Tommy");
             users.add("Smith");
             users.add("Khaled");
-            String name;
+            String name = "";
             String trainingPlan;
             double currentWeight;
             InputHandler handler = new InputHandler(); // Method for Requests
@@ -22,8 +22,10 @@
             boolean startProgram = true;
             //Start of the program with loop
             while (startProgram) {
+                boolean isRegister = false; // To check whether register user or login user
                 clearConsole();
-                while (true) {
+                boolean isLoginCorrect = false;
+                while (!isLoginCorrect) {
                     System.out.println(" ------------------------------------------------------ " +
                             "\n| Welcome from the North Sussex Judo's Fees Calculator |\n --------" +
                             "---------------------------------------------- ");
@@ -31,29 +33,46 @@
                     // asking register or login
                     op = handler.requestOperation();
                     //If Exit
-                    if (op == 3) {
-                        System.out.println("----- Successfully exit from the application ---------");
-                        System.exit(0);
-                        // If Login
-                    } else if (op == 2) { // if user choose try to login
-                        name = handler.requestAthleteName();
-                        boolean isFound = false;
-                        for (String n : users) {
-                            if (n.equals(name)) {
-                                isFound = true;
-                                break;
-                            }
-                        }
-                        if (isFound) {
-                            System.out.println("\n----- Welcome " + name + " ----------");
+                    switch (op){
+                        //Register
+                        case 1:
+                            name = handler.requestAthleteName();
+                            users.add(name);
+                            clearConsole();
+                            System.out.println(" \n-- Username " + name + " is successfully registered in the system --\n-- Login to your registered account again --");
                             break;
-                        } else {
-                            System.out.println("!!! Username not found, Try Again !!!");
-                        }
-                    } else if (op == 1){
-                        name = handler.requestAthleteName();
-                        users.add(name);
-                        break;
+                        //Login
+                        case 2:
+                            name = handler.requestAthleteName();
+                            int counter = 0;
+                            boolean isFound = false;
+                            for (String n : users) {
+                                if (n.equals(name)) {
+                                    isFound = true;
+                                    break;
+                                }
+                                counter++;
+                            }
+                            if (isFound) {
+                                clearConsole();
+                                System.out.println("\n-- Hello " + name + " , Welcome From Judo Fees Calculator --");
+                                // Filter for new user :: for not to ask competition entered
+                                if(counter > 5){
+                                    isRegister = true;
+                                }
+                                isLoginCorrect = true;
+                            } else {
+                                System.out.println("!!! Username not found, Try Again !!!");
+                            }
+                            break;
+                        //Exit
+                        case 3:
+                            System.out.println("----- Successfully exit from the application ---------");
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("!!! Invalid Opeartion Number !!!");
+                            break;
                     }
                 }
                 // ask and validate athlete name
@@ -156,13 +175,12 @@
             System.out.println("+" + "-".repeat(tableWidth) + "+");
             // Print table header with formatted output
             System.out.printf("| %-10s | %10s | %10s |\n", "Training Plan", "SessionPerWeek", "Weekly Fee (£GBP)");
-            System.out.printf("| %-10s | %10s | %10s |\n", "Training Plan", "SessionPerWeek", "Weekly Fee (£GBP)");
             // Print separator line
             System.out.println("+" + "-".repeat(tableWidth) + "+");
             // Print data rows with formatted output
-            System.out.printf("| %-13s | %14s | %17.2f |\n", "Beginner", "2 session", 25.00);
-            System.out.printf("| %-13s | %14s | %17.2f |\n", "Intermediate", "3 session", 30.00);
-            System.out.printf("| %-13s | %14s | %17.2f |\n", "Elite", "5 session", 35.00);
+            System.out.printf("| %-13s | %14s |     £ %-11.2f |\n", "Beginner", "2 session", 25.00);
+            System.out.printf("| %-13s | %14s |     £ %-11.2f |\n", "Intermediate", "3 session", 30.00);
+            System.out.printf("| %-13s | %14s |     £ %-11.2f |\n", "Elite", "5 session", 35.00);
             // Print bottom border
             System.out.println("+" + "-".repeat(tableWidth) + "+");
         }
@@ -203,10 +221,10 @@
             System.out.println("-".repeat(39));
             System.out.printf(" %18s %-2s %-18s \n", "Athlete Name", "-", name);
             System.out.println("-".repeat(39));
-            System.out.printf("| %-20s |   %-10s |\n", "Training Costs", decimalFormat.format(trainFee));
-            System.out.printf("| %-20s |   %-10s |\n", "Competition Costs", decimalFormat.format(compFee));
-            System.out.printf("| %-20s |   %-10s |\n", "Private Hours Costs", decimalFormat.format(coachFee));
-            System.out.printf("| %-20s |   %-10s |\n", "Total Costs", decimalFormat.format(totalCosts));
+            System.out.printf("| %-20s |   £ %-8s |\n", "Training Costs", decimalFormat.format(trainFee));
+            System.out.printf("| %-20s |   £ %-8s |\n", "Competition Costs", decimalFormat.format(compFee));
+            System.out.printf("| %-20s |   £ %-8s |\n", "Private Hours Costs", decimalFormat.format(coachFee));
+            System.out.printf("| %-20s |   £ %-8s |\n", "Total Costs", decimalFormat.format(totalCosts));
             System.out.println("-".repeat(39));
         }
 
