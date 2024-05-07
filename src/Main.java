@@ -183,6 +183,12 @@
             System.out.printf("| %-13s | %14s |     £ %-11.2f |\n", "Elite", "5 session", 35.00);
             // Print bottom border
             System.out.println("+" + "-".repeat(tableWidth) + "+");
+            // Competition Fees
+            System.out.printf("| %-30s |     £ %-11.2f |\n", "Coaching Fees Per Hour ", 9.50);
+            System.out.println("+" + "-".repeat(tableWidth) + "+");
+            // Competition Fees
+            System.out.printf("| %-30s |     £ %-11.2f |\n", " Fees Per Competition ", 22.00);
+            System.out.println("+" + "-".repeat(tableWidth) + "+");
         }
 
         static void printWeightComparison(String name, String trainPlan, int numOfCompt, int numOfCoach, double currentWeight) {
@@ -210,7 +216,7 @@
             // Print separator line
             System.out.println("+" + "-".repeat(tableWidth) + "+");
             // Print data rows with formatted output
-            System.out.printf("| %-15s |     %-10s |      %-23s | %13s |        %-10s |       %-7s |\n", name, currentWeight, weightCategory, trainPlan, numOfCompt, numOfCoach);
+            System.out.printf("| %-15s |     %4s kg    |      %-23s | %13s |        %-10s |       %-7s |\n", name, currentWeight, weightCategory, trainPlan, numOfCompt, numOfCoach);
             // Print bottom border
             System.out.println("+" + "-".repeat(tableWidth) + "+");
         }
@@ -224,6 +230,7 @@
             System.out.printf("| %-20s |   £ %-8s |\n", "Training Costs", decimalFormat.format(trainFee));
             System.out.printf("| %-20s |   £ %-8s |\n", "Competition Costs", decimalFormat.format(compFee));
             System.out.printf("| %-20s |   £ %-8s |\n", "Private Hours Costs", decimalFormat.format(coachFee));
+            System.out.println("-".repeat(39));
             System.out.printf("| %-20s |   £ %-8s |\n", "Total Costs", decimalFormat.format(totalCosts));
             System.out.println("-".repeat(39));
         }
